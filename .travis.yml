@@ -14,5 +14,10 @@ after_success:
   - docker build -t thandotettey/multi-server ./server
   - docker build -t thandotettey/multi-worker ./worker
   # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   #Push images to docker hub
+  - docker push thandotettey/multi-client
+  - docker push thandotettey/mult-nginx
+  - docker push thandotettey/multi-server
+  - docker push thandotettey/multi-worker
